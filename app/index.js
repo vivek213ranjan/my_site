@@ -1,20 +1,6 @@
 var React = require('react');
-var ReactDom = require('react-dom');
-
+var ReactDOM = require('react-dom');
 require('./index.css');
+var VivekBlog = require('./components/VivekBlog');
 
-class VivekBlog extends React.Component {
-  render() {
-    return (
-      <div> Hello World! </div>
-    );
-  }
-}
-
-ReactDom.render(
-  <VivekBlog />,
-  document.getElementById('app')
-);
-
-
-module.exports = VivekBlog;
+ReactDOM.render(<VivekBlog />, document.getElementById("app"));
