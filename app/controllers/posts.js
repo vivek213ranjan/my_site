@@ -1,10 +1,8 @@
 var Post = require('../models/post');
+let mongoUtil  = require('../utils/mongoUtil');
 module.exports = function(router){
 
 //now we can set the route path  & initialize the API
-  router.get('/', function(req, res){
-    res.json({ message: 'API initialized!!'});
-  });
   router.route('/posts')
   .post(function(req, res) {
     var post = new Post();

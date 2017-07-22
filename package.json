@@ -19,17 +19,18 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
-    "prop-types": "^15.5.10",
-    "query-string": "^4.3.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "foreman": "^2.0.0",
     "marked": "^0.3.6",
+    "mongodb": "^2.2.30",
     "mongoose": "^4.11.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "prop-types": "^15.5.10",
+    "query-string": "^4.3.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
