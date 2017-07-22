@@ -1,8 +1,11 @@
-//dependencies
-var express = require('express');
+"use strict";
+
+let express = require('express');
+let app = express();
+
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var app = express();
+
 var router = express.Router();
 
 var port = process.env.API_PORT || 3038;
@@ -21,8 +24,21 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/sports', (request, response) => {
+	response.json([
+		{
+			"name": "First Post",
+			"content": "Content of the first post"
+		},
+		{
+			"name": "Second Post",
+			"content": "Content of the second post"
+		}
+	])
+});
+
 //starts the server and listens for requests
-app.listen(port, function(){
+app.listen(port, () => {
   console.log(`api running on port ${port}`);
 });
 

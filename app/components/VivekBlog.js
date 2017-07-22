@@ -1,12 +1,15 @@
-var React = require('react');
-var ReactRouter = require('react-router-dom');
-var SideBar = require('./Sidebar');
-
+import React from 'react';
+import ReactRouter from 'react-router-dom';
+import SideBar from './Sidebar';
+import MainContent from './MainContent';
 
 class App extends React.Component {
   render() {
     return (
-      <SideBar />
+      <div>
+        <SideBar />
+        <MainContent />
+      </div>
     )
   }
 }

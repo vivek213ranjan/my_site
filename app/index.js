@@ -1,6 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import VivekBlog from './components/VivekBlog';
 require('./index.css');
-var VivekBlog = require('./components/VivekBlog');
 
 ReactDOM.render(<VivekBlog />, document.getElementById("app"));
