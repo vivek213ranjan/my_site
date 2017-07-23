@@ -1,5 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Logo() {
 	return(
@@ -11,11 +17,23 @@ function Logo() {
 
 function WebsiteSection() {
 	return(
-		<ul className="sidebar-ul">
-			<li className="cateogry">Website</li>
-			<li>Blog</li>
-			<li>About</li>
-		</ul>
+		<Router>
+			<ul className="sidebar-ul">
+				<li className="cateogry">
+						Website
+				</li>
+				<li>
+					<Link to='/'>
+						Blog
+					</Link>
+				</li>
+				<li>
+					<NavLink to='/about'>
+						About
+					</NavLink>
+				</li>
+			</ul>
+		</Router>
 	);
 }
 

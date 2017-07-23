@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PostList from './PostList';
+import CenterSection from './CenterSection';
 
-const HeaderSection = () => {
+const HeaderSection = (props) => {
 	return(
 		<div id="main_content">
 			<div id="header">
@@ -16,15 +17,21 @@ const HeaderSection = () => {
 					</button>
 				</div>
 			</div>
-			<PostList />
+			<CenterSection />
 		</div>
 	);
 };
 
 class MainContent extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			isLogin: false
+		}
+	}
 	render(){
 		return(
-			<HeaderSection />
+			<HeaderSection isLogin={this.state.isLogin}/>
 		);
 	}
 };

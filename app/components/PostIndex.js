@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Loading from './Loading';
 import api from '../utils/api';
+import About from './About';
+import PostIndex from './PostIndex';
+
+var ReactRouter = require('react-router-dom');
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
 
 function PostsGrid(props){
   return(
@@ -58,7 +64,6 @@ class PostList extends React.Component {
 				{!this.state.posts === [] ?  <Loading /> : <PostsGrid
 	          		posts={this.state.posts}
 	        	/>}
-	        	{this.props.children}
 			</div>
 		)
 	}

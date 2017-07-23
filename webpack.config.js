@@ -9,6 +9,9 @@ var config = {
     filename: 'index_bundle.js',
     publicPath: '/'
   },
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
