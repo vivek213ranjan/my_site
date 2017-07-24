@@ -2,19 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PostList from './PostList';
 import CenterSection from './CenterSection';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 const HeaderSection = (props) => {
 	return(
 		<div id="main_content">
 			<div id="header">
-				<p>All Posts</p>
+				<Link to="/">
+					<p>All Posts</p>
+				</Link>
 				<div className="buttons">
-					<button className="button">
-						New Post
-					</button>
-					<button className="button">
-						Log Out
-					</button>
+					<Link to="posts/new">
+						<button className="button">
+							New Post
+						</button>
+					</Link>
 				</div>
 			</div>
 			<CenterSection />
