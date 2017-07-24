@@ -64,6 +64,16 @@ app.use(expressValidator({
 			msg: msg,
 			value: value
 		};
+	},
+	customValidators: {
+		minLength: function(strings, threshold) {
+			console.log(strings);
+			console.log(threshold);
+			return strings.length < threshold;
+		},
+		maxLength: function(strings, threshold) {
+			return strings.length > threshold;
+		}
 	}
 }));
 

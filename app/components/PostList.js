@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import api from '../utils/api';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 function PostsGrid(props){
   return(
@@ -10,9 +15,10 @@ function PostsGrid(props){
     {
 		props.posts.map(function(post, index){
 			return(
-				<div className="post_wrapper" key={index}>
-					<h2 className="title">{post.name}</h2>
-					<p className="date">{post.content}</p>
+				<div className="post_wrapper" key={index} id={post._id}>
+					<Link to={`/posts/${post._id}`}>
+						<h2 className="title">{post.name}</h2>
+					</Link>
 				</div>
 			)
 		})
@@ -58,7 +64,6 @@ class PostList extends React.Component {
 				{!this.state.posts === [] ?  <Loading /> : <PostsGrid
 	          		posts={this.state.posts}
 	        	/>}
-	        	{this.props.children}
 			</div>
 		)
 	}

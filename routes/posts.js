@@ -12,15 +12,46 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
-  var post = new Post();
-  post.name = req.body.name;
-  post.body = req.body.content;
-  post.save(function(err){
-    if(err){
-      res.send(err);
-    }
-    res.json({message: 'Post Created'});
-  });
+  var name = req.body.name;
+  var body = req.body.content;
+
+  //Validations
+  req.checkBody('name', 'Post Title is required').notEmpty();
+  req.checkBody('content', 'Post Body is required').notEmpty();
+  req.checkBody('name', 'Post title length should lie between 10  - 50').isLength({min: 10});
+  req.checkBody('content', 'Post content length should lie between 150  - 500').isLength({min: 150});
+
+  var errors = req.validationErrors();
+  if(errors){
+    res.send({
+      success: false,
+      data: {},
+      errors: errors
+    });
+  } else {
+    var newPost = new Post({
+      name: name,
+      body: body
+    });
+    Post.createPost(newPost, function(err, post){
+      if(err){
+        res.send({
+          success: false,
+          data: {}
+        }); 
+      } else {
+        res.send({
+          success: true,
+          data: {
+            post: {
+              id: post._id
+            }
+          },
+          errors: errors
+        });
+      }
+    });
+  }
 });
 
 router.get('/:post_id', function(req, res){
@@ -33,19 +64,59 @@ router.get('/:post_id', function(req, res){
 });
 
 router.put('/:post_id', function(req, res){
-  Post.findById(req.params.post_id, function(err, post){
-    if(err){
-      res.send(err);
-    }
-    post.name = (req.body && req.body.name) || post.name;
-    post.body = (req.body && req.body.content) || post.body;
-    post.save(function(err){
+  var name = req.body.name;
+  var body = req.body.content;
+
+  //Validations
+  req.checkBody('name', 'Post Title is required').notEmpty();
+  req.checkBody('content', 'Post Body is required').notEmpty();
+  req.checkBody('name', 'Post title length should lie between 10  - 50').isLength({min: 10});
+  req.checkBody('content', 'Post content length should lie between 150  - 500').isLength({min: 150});
+
+  var errors = req.validationErrors();
+  
+  if(errors){
+    res.send({
+      success: false,
+      data: {},
+      errors: errors
+    });
+  } else {
+    var newPost = new Post({
+      name: name,
+      body: body
+    });
+
+    Post.findById(req.params.post_id, function(err, post){
       if(err){
-        res.send(err);
+        res.send({
+          success: false,
+          data: {}
+        }); 
+      } else {
+        post.name = (req.body && req.body.name) || post.name;
+        post.body = (req.body && req.body.content) || post.body;  
+        post.save(function(err){
+          if(err){
+            res.send({
+              success: false,
+              data: {}
+            }); 
+          } else {
+            res.send({
+              success: true,
+              data: {
+                post: {
+                  id: post._id
+                }
+              },
+              errors: errors
+            });  
+          }
+        })
       }
-      res.json({ message: 'Post Updated' });
-    })
-  });
+    });
+  }
 });
 
 router.delete('/:post_id', function(req, res){

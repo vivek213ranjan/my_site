@@ -16,7 +16,7 @@ const HeaderSection = (props) => {
 					<p>All Posts</p>
 				</Link>
 				<div className="buttons">
-					<Link to="posts/new">
+					<Link to="/posts_new">
 						<button className="button">
 							New Post
 						</button>
