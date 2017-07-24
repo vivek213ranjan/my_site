@@ -3,8 +3,7 @@ var ReactDOM = require('react-dom');
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch
+  Link
 } from 'react-router-dom';
 import About from './About';
 import PostList from './PostList';
@@ -13,13 +12,10 @@ import UserRegister from './UserRegister';
 class CenterSection extends React.Component {
 	render(){
 		return(
-	      	<Router>
-	      		<div className='container'>
+			<div className="container">
 	      			<Route exact path='/' component={PostList} />
-			        <Route path='/about' component={About} />
-		        </div>
-		    </Router>
-		   
+			        <Route path="/about" component={About} />
+			</div>
 		)
 	}
 };

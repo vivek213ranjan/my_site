@@ -17,23 +17,21 @@ function Logo() {
 
 function WebsiteSection() {
 	return(
-		<Router>
 			<ul className="sidebar-ul">
 				<li className="cateogry">
 						Website
 				</li>
 				<li>
-					<Link to='/'>
+					<Link to="/">
 						Blog
 					</Link>
 				</li>
 				<li>
-					<NavLink to='/about'>
+					<Link to="/about">
 						About
-					</NavLink>
+					</Link>
 				</li>
 			</ul>
-		</Router>
 	);
 }
 

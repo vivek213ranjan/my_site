@@ -1,16 +1,21 @@
 import React from 'react';
 import SideBar from './Sidebar';
 import MainContent from './MainContent';
-var ReactRouter = require('react-router-dom');
-var Router = ReactRouter.BrowserRouter;
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends React.Component {
   render() {
     return (
-      	<div>
-	        <SideBar />
-	        <MainContent />
-	    </div>
+    	<Router>
+	      	<div>
+		        <SideBar />
+		        <MainContent />
+		    </div>
+		</Router>
     )
   }
 }
