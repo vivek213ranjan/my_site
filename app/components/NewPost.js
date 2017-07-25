@@ -17,6 +17,8 @@ class NewPost extends React.Component {
     	name: this.state.title,
     	content: this.state.content
     }
+    document.getElementById('name_error').innerHTML = '';
+    document.getElementById('content_error').innerHTML = '';
     api.createNewPost(newPost)
     	.then(function(response){
     		console.log(response.success);
