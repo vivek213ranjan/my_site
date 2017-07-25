@@ -9,6 +9,13 @@ import {
   Link
 } from 'react-router-dom';
 
+const Month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function getDate(date){
+	var date = new Date(date);
+	return `${Month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
 function PostsGrid(props){
   return(
     <ul className="popular-list">
@@ -19,6 +26,7 @@ function PostsGrid(props){
 					<Link to={`/posts/${post._id}`}>
 						<h2 className="title">{post.name}</h2>
 					</Link>
+					<p className="date">{`${getDate(post.createdAt)}`}</p>
 				</div>
 			)
 		})

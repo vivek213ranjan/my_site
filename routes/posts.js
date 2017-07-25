@@ -3,11 +3,11 @@ var router = express.Router();
 var Post = require('../app/models/post');
 
 router.get('/', function(req, res){
-  Post.find(function(err, posts){
+  Post.find({}).sort({name: 1}).exec(function(err, posts){
     if(err){
       res.send(err)
     }
-    res.json(posts);
+    res.json(posts.sort({updatedAt: 1}));
   });
 });
 
@@ -96,6 +96,7 @@ router.put('/:post_id', function(req, res){
       } else {
         post.name = (req.body && req.body.name) || post.name;
         post.body = (req.body && req.body.content) || post.body;  
+        post.updatedAt = new Date();
         post.save(function(err){
           if(err){
             res.send({

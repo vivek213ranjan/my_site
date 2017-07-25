@@ -6,6 +6,7 @@ import api from '../utils/api';
 import {
 	Link
 } from 'react-router-dom';
+import prettyDate from '../helpers/extra_helpers';
 
 const getPostIdFromUrl = (props) => {
 	const postId = props.match.params.postId
@@ -18,7 +19,8 @@ class PostShow extends React.Component {
 		this.state = {
 			title: '',
 			content: '',
-			id: ''
+			id: '',
+			createdAt: ''
 		}
 		this.updatePosts = this.updatePost.bind(this);
 	}
@@ -31,7 +33,8 @@ class PostShow extends React.Component {
 			return{
 				title: '',
 				content: '',
-				id: ''
+				id: '',
+				createdAt: ''
 			}
 		});
 		var postId = getPostIdFromUrl(this.props);
@@ -42,7 +45,8 @@ class PostShow extends React.Component {
 					return{
 						title: post.name,
 						content: post.body,
-						id: post._id
+						id: post._id,
+						createdAt: post.createdAt
 					}
 				})
 			}.bind(this))
@@ -52,14 +56,11 @@ class PostShow extends React.Component {
 			<div id="post_content">
 				<h1 className="title">{this.state.title}</h1>
 				<p className="date">
-					Submitted Ago
-					|   
-					<Link to={`/posts/${this.state.id}/edit`}>
+					Submitted {prettyDate(this.state.createdAt)}   |     <Link to={`/posts/${this.state.id}/edit`}>
 						Edit 
-					</Link>
-					| 
-					Delete
+					</Link>    
 				</p>
+				<br /><br />
 				<p className="body post-content-body">{this.state.content}</p>
 
 	
