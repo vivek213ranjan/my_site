@@ -10,7 +10,9 @@ var config = {
     publicPath: '/'
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: {
+      index: 'dist/index.html'
+    }
   },
   module: {
     rules: [
