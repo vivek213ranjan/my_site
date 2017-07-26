@@ -39,10 +39,10 @@ function SocialSection() {
 	return(
 		<ul className="sidebar-ul">
 			<li className="cateogry">Social</li>
-			<li><a href="">Twitter</a></li>
-			<li><a href="">Instagram</a></li>
-			<li><a href="">Github</a></li>
-			<li><a href="">Email</a></li>
+			<li><a href="https://twitter.com/vivekranjan123">Twitter</a></li>
+			<li><a href="https://www.facebook.com/vivek.ranjan.23">Facebook</a></li>
+			<li><a href="https://github.com/vivek213ranjan">Github</a></li>
+			<li><a href="https://plus.google.com/u/1/112448668687415626363">Google Plus</a></li>
 		</ul>
 	);
 }
