@@ -4,7 +4,8 @@ import MainContent from './MainContent';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 
 class App extends React.Component {
@@ -17,10 +18,12 @@ class App extends React.Component {
   render() {
     return (
     	<Router>
-	      	<div>
-		        <SideBar />
-		        <MainContent />
-		    </div>
+        <div>
+        <SideBar />
+          <Switch>
+  		        <MainContent />
+          </Switch>
+        </div>
 		</Router>
     )
   }

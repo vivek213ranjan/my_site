@@ -21,6 +21,7 @@ class CenterSection extends React.Component {
 			        <Route exact path="/posts_new" component={NewPost} />
 			        <Route exact path="/posts/:postId" component={PostShow} />
 			        <Route exact path="/posts/:postId/edit" component={PostEdit} />
+			       
 			</div>
 		)
 	}
