@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 import api from '../utils/api';
+import TinyMCE from 'react-tinymce';
 
 class NewPost extends React.Component {
 	constructor(props){
@@ -10,6 +11,11 @@ class NewPost extends React.Component {
       content: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEditorChange = this.handleEditorChange.bind(this);
+  }
+  handleEditorChange(e) {
+  	this.setState({ ['content']: e.target.getContent() });
+    // console.log('Content was updated:', e.target.getContent());
   }
   handleSubmit(event){
     event.preventDefault();
@@ -58,13 +64,14 @@ class NewPost extends React.Component {
                 <br />
 			          <div>
 			            <label>Body</label><br />
-			            <textarea
-			              id="content"
-			              placeholder="Post Content" 
-			              name="body" 
-			              value={this.state.content}
-			              onChange={(e) => this.handleChange(e, "content")} 
-			            /><br />
+			            <TinyMCE
+        					content="<p>This is the initial content of the editor</p>"
+        					config={{
+          						plugins: 'link image code',
+          						toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+        					}}
+        					onChange={this.handleEditorChange}
+      					/><br />
 			            <p id="content_error" className="error_message"></p><br />
 			          </div>
 					   <div>

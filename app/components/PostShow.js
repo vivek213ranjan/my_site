@@ -23,6 +23,10 @@ class PostShow extends React.Component {
 			createdAt: ''
 		}
 		this.updatePosts = this.updatePost.bind(this);
+		this.getState = this.getState.bind(this);
+	}
+	getState(){
+		console.log(this);
 	}
 	componentDidMount(){
 		//Make API call to fetch post
@@ -48,8 +52,9 @@ class PostShow extends React.Component {
 						id: post._id,
 						createdAt: post.createdAt
 					}
-				})
-			}.bind(this))
+				});
+				document.getElementById('content_body').innerHTML = this.state.content;
+			}.bind(this));
 	}
 	render(){
 		return(
@@ -61,7 +66,7 @@ class PostShow extends React.Component {
 					</Link>    
 				</p>
 				<br /><br />
-				<p className="body post-content-body">{this.state.content}</p>
+				<p className="body post-content-body" id="content_body"></p>
 
 	
 			</div>
